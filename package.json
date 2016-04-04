@@ -7,7 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --host 0.0.0.0",
     "build": "webpack --config webpack-production.config.js -p"
-
   },
   "author": "",
   "license": "ISC",
@@ -20,5 +19,8 @@
     "jshint-loader": "^0.8.3",
     "node-libs-browser": "^1.0.0",
     "webpack": "^1.12.14"
+  },
+  "dependencies": {
+    "react-dom": "^0.14.8"
   }
 }

@@ -1,7 +1,11 @@
+var webpack = require('webpack');
+
 module.exports = {
   entry: [
+    'webpack-dev-server/client?http://0.0.0.0:3000',
+    'webpack/hot/only-dev-server',
     './app.js',
-    './globals.js'],
+  ],
   output: {
     filename: 'bundle.js'
   },
@@ -14,14 +18,14 @@ module.exports = {
         loader: 'jshint-loader'
       }
     ],
+    plugins: [
+      new webpack.HotModuleReplacementPugin()
+    ],
     loaders: [
       {
-        test: /\.es6$/,
+        test: [/\.es6$/, /\.js$/],
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['react', 'es2015']
-        }
+        loaders: ['babel-loader', 'react-hot'],
       }
     ]
   },
