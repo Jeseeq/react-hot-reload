@@ -1,31 +1,32 @@
 var webpack = require('webpack');
 
 module.exports = {
+  devtool: 'eval',
   entry: [
     'webpack-dev-server/client?http://0.0.0.0:3000',
     'webpack/hot/only-dev-server',
-    './app.js',
+    './app',
   ],
   output: {
     filename: 'bundle.js'
   },
-  watch: true,
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ],
   module: {
     preLoaders: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'jshint-loader'
+        loader: 'eslint-loader'
       }
     ],
-    plugins: [
-      new webpack.HotModuleReplacementPugin()
-    ],
+
     loaders: [
       {
         test: [/\.es6$/, /\.js$/],
         exclude: /node_modules/,
-        loaders: ['babel-loader', 'react-hot'],
+        loaders: ['react-hot', 'babel'],
       }
     ]
   },
